@@ -144,3 +144,49 @@ students = student_data.students
 #         f.write(f"    {repr(student)},\n")  # Use repr() to write the dictionary as a string suitable for Python code
 #     f.write("]\n")
 
+
+#worksheet problem 
+
+# 4
+student=(input("do you want to add a new student if yes answer 1 if no answer 2"))
+if student=="1":
+    cpsid = int(input("Enter CPSID: "))
+    combo_name = input("Enter Combo,Name (Last, First): ")
+    first_name = input("Enter First Name: ")
+    last_name = input("Enter Last Name: ")
+    middle_name = input("Enter Middle Name: ")
+    homeroom = input("Enter Homeroom (e.g., B220): ")
+    grade_level = int(input("Enter Grade Level: "))
+    prim_email = input("Enter Primary Email: ")
+    sec_email = input("Enter Secondary Email: ")
+    new_student = {
+        'CPSID': cpsid,
+        'Combo,Name': combo_name,
+        'FName': first_name,
+        'LName': last_name,
+      'MName': middle_name,
+        'HR': homeroom,
+        'GL': grade_level,
+        'Email': [prim_email, sec_email]
+    }
+    print("New student has been addded")
+    students.append(new_student)
+
+
+
+
+
+
+# Overwrite the `student_data.py` file with the updated data
+# Overwrite the student_data.py file with formatted data
+with open('student_data.py', 'w') as f:
+    f.write("students = [\n")
+    for student in students:
+        formatted_student = "    {\n"
+        for key, value in student.items():
+            formatted_student += f"        '{key}': {repr(value)},\n"
+        formatted_student = formatted_student.rstrip(",\n") + "\n    },\n"  # Clean trailing commas and newline
+        f.write(formatted_student)
+    f.write("]\n")
+
+print("student_data.py has been updated with the original formatting.")
